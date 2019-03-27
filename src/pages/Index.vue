@@ -1,0 +1,135 @@
+<template>
+  <Layout>
+    <HomeHeader :data="homeHeaderData"/>
+    <SideBlock :data="firstSideBlock"/>
+    <TripleBlock :blocks="firstTripleBlock"/>
+  </Layout>
+
+  <!--  -->
+</template>
+
+
+<page-query>
+  query HomePage {
+    contentfulHomePageHeader (id: "6Qg6LelX8jFNAxRyTTqfS7") {
+      seeMoreButtonText
+      subText
+      mainLinks {
+        fields {
+          linkName
+          linkUrl
+        }
+      }
+      socialMediaButtons {
+        fields {
+          name
+          icon {
+            fields {
+              title
+              description
+              file {
+                url
+              }
+            }
+          }
+          link
+        }
+      }
+      mainImage {
+        fields {
+          title
+          description
+          file {
+            url
+          }
+        }
+      }
+    }
+    contentfulSideBlock (id: "1WpDRFUkPwCDqeFZZFlQzp") {
+      alignment
+      colour
+      colourBackdropText
+      whiteBackdropContent {
+        fields {
+          name
+          icon {
+            fields {
+              title
+              file {
+                url
+              }
+            }
+          }
+        }
+      }
+    }
+    contentfulTripleBlock (id: "4DfGP6JoQoC9QP13V0uWDv") {
+      blocks {
+        fields {
+          roleTitle
+          startDate
+          endDate
+          description
+          companyIcon {
+            fields {
+              title
+              file {
+                url
+              }
+            }
+          }
+          skills {
+            fields {
+              name
+              icon {
+                fields {
+                  title
+                  file {
+                    url
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+</page-query>
+
+<script>
+import HomeHeader from '~/components/HomeHeader.vue'
+import SideBlock from '~/components/SideBlock.vue'
+import TripleBlock from '~/components/TripleBlock.vue'
+
+export default {
+  metaInfo: {
+    title: 'Home',
+    htmlAttrs: {
+      lang: 'en',
+    },
+    bodyAttrs: {
+      class: 'home'
+    }
+  },
+  components: {
+    HomeHeader,
+    SideBlock,
+    TripleBlock
+  },
+  computed: {
+    homeHeaderData() {
+      return this.$page.contentfulHomePageHeader
+    },
+    firstSideBlock() {
+      return this.$page.contentfulSideBlock
+    },
+    firstTripleBlock() {
+      return this.$page.contentfulTripleBlock.blocks
+    }
+  }
+}
+</script>
+
+<style scoped lang="scss">
+</style>

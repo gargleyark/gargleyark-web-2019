@@ -4,7 +4,7 @@
 
 `npm install --global @gridsome/cli`
 
-### 2. Create a Gridsome project
+### 2. Clone project and run
 
 1. Clone this repo - `git clone git@github.com:gargleyark/gargleyark-web-2019.git`
 2. `cd gargleyark-web-2019` to open the folder

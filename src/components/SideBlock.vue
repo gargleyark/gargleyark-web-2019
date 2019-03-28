@@ -4,39 +4,55 @@
          
       </article>
       <article class="side-block-text">
-        <Skills v-if="whiteBackdropContent.length" :skills="whiteBackdropContent" size="large"/>
-        <section v-else v-html="whiteBackdropContent"/>
+        <whiteBackdropComponent :is="whiteBackdropComponent" :data="whiteBackdropContent" v-if="whiteBackdropComponent" size="large" />
       </article>
     </article>
 </template>
 
 <script>
 import marked from 'marked'
-import Skills from '~/components/Skills.vue'
 
 export default {
   props: {
     data: Object
   },
-  components: {
-    Skills
+  data() {
+    return {
+      whiteBackdropComponent: null,
+    }
   },
   computed: {
     reverse() { return this.data.alignment.match(/right/i) },
     colour() { return this.data.colour.toLowerCase() },
     colourBackdropText() { return marked(this.data.colourBackdropText) },
-    whiteBackdropContent() { return this.getWhiteBackdropContent(this.data.whiteBackdropContent) }
+    whiteBackdropContent() { return this.getWhiteBackdropContent(this.data.whiteBackdropContent) },
+    whiteBackgroundContentType() { 
+      const componentName = this.data.whiteBackgroundContentType.replace(/\s/, '')
+      return () => import(`~/components/${componentName}`)
+    }
   },
   methods: {
-    getWhiteBackdropContent(data) {
-      if (data.length) {
-        return data.map(({
+    getWhiteBackdropContent(content) {
+      if (this.data.whiteBackgroundContentType === 'Skills') {
+        return content.map(({
           fields: {name, icon: { fields: { file: { url }}}}
         }) => ({ name, image: url }))
       }
 
-      return marked(data)
+      try {
+        return marked(content[0])
+      } catch (e) {
+        return content[0]
+      }
     }
+  },
+  mounted() {
+    this.whiteBackgroundContentType()
+      .then(() => {
+        this.whiteBackdropComponent = () => this.whiteBackgroundContentType()
+      }).catch(() => {
+        this.whiteBackdropComponent = () => import('~/components/Text')
+      })
   }
 }
 </script>

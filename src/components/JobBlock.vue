@@ -5,7 +5,7 @@
       <div class="company">
         <img v-for="(icon, index) in companyIcon" :index="index" :src="icon.image"/>
       </div>
-      <Skills :skills="skills" size="small" white="true"/>
+      <Skills :data="skills" size="small" white="true"/>
       <div class="description" v-html="description"></div>
   </article>
 </template>

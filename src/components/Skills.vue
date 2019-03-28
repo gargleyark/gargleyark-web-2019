@@ -1,6 +1,6 @@
 <template>
   <div class="skills" :class="[size, {white: white}]">
-    <a  v-for="(skill, i) in skills" :index="skill.name" class="skill" :title="skill.name">
+    <a  v-for="(skill, i) in data" :index="skill.name" class="skill" :title="skill.name">
       <g-image :alt="skill.name" :src="skill.image" />
     </a>
   </div>
@@ -11,7 +11,7 @@ import marked from 'marked'
 
 export default {
   props: {
-    skills: Array,
+    data: Array,
     size: String,
     white: String
   },

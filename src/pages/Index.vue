@@ -50,8 +50,13 @@
       alignment
       colour
       colourBackdropText
+      whiteBackgroundContentType
       whiteBackdropContent {
         fields {
+          title
+          emailPlaceholder
+          messagePlaceholder
+          buttonValue
           name
           icon {
             fields {
@@ -68,8 +73,13 @@
       alignment
       colour
       colourBackdropText
+      whiteBackgroundContentType
       whiteBackdropContent {
         fields {
+          title
+          emailPlaceholder
+          messagePlaceholder
+          buttonValue
           name
           icon {
             fields {

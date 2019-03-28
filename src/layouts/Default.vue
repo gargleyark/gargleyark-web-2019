@@ -40,6 +40,34 @@ h4 {
   box-sizing: border-box;
 }
 
+.grey {
+  h2:before {
+    content: '';
+    height: 10px;
+    margin-top: 0px;
+    margin-bottom: 45px;
+    background-color: rgba(74, 74, 74, 0.08);
+    display: block;
+  }
+
+  p {
+    margin: 0px;
+    text-transform: uppercase;
+    font-size: 14px;
+    color: #888;
+    width: 40%;
+    display: inline-block;
+  }
+
+  a {
+    border: none;
+    display: block;
+    margin-bottom: 15px;
+    text-transform: lowercase;
+    font-size: 18px;
+  }
+}
+
 a {
   color: #f2b754;
   text-decoration: none;

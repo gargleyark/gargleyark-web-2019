@@ -4,16 +4,18 @@
         <section v-for="(link, i) in pageHeader" :index="link.linkName" class="links">
           <p><a :href="link.linkUrl">{{ link.linkName }}</a><span v-if="i === pageHeader.length - 2"> &</span></p>
         </section>
-        <p class="subtext" v-html="subText"></p>
+        <section>
+          <p class="subtext" v-html="subText"></p>
+        </section>
         <section class="social">
-          <a  v-for="(button, i) in socialMediaButtons" :index="button.name" :href="button.link" :alt="button.name" class="social-media-button">
-            <g-image alt="Example image" :src="button.image" />
+          <a  v-for="(button, i) in socialMediaButtons" :index="button.name" :href="button.link" class="social-media-button">
+            <g-image :alt="button.name" :src="button.image" />
           </a>
         </section>
         <DownButton class="down-button-header" scrollAmount="768"/>
       </article>
       <article class="header-image">
-        <g-image alt="Example image" :src="mainImage" width="135" />
+        <g-image alt="oh look it's Mike" :src="mainImage" />
       </article>
     </article>
 </template>

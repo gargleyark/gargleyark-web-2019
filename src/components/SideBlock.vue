@@ -4,7 +4,8 @@
          
       </article>
       <article class="side-block-text">
-        <Skills :skills="whiteBackdropContent" size="large"/>
+        <Skills v-if="whiteBackdropContent.length" :skills="whiteBackdropContent" size="large"/>
+        <section v-else v-html="whiteBackdropContent"/>
       </article>
     </article>
 </template>
@@ -21,12 +22,21 @@ export default {
     Skills
   },
   computed: {
-    reverse() { return this.data.alignment.match(/right/i)},
+    reverse() { return this.data.alignment.match(/right/i) },
     colour() { return this.data.colour.toLowerCase() },
     colourBackdropText() { return marked(this.data.colourBackdropText) },
-    whiteBackdropContent() { return this.data.whiteBackdropContent.map(({
-      fields: {name, icon: { fields: { file: { url }}}}
-    }) => ({ name, image: url }))}
+    whiteBackdropContent() { return this.getWhiteBackdropContent(this.data.whiteBackdropContent) }
+  },
+  methods: {
+    getWhiteBackdropContent(data) {
+      if (data.length) {
+        return data.map(({
+          fields: {name, icon: { fields: { file: { url }}}}
+        }) => ({ name, image: url }))
+      }
+
+      return marked(data)
+    }
   }
 }
 </script>
@@ -88,6 +98,10 @@ article {
     &.red {
       background-image: linear-gradient(to bottom right, #e53842, #cb242d);
       color: white;
+    }
+
+    &.grey {
+      background-image: linear-gradient(to bottom right, #f4f3f3, #d9d8d8);
     }
 
     @media only screen and (min-width: 768px) {

@@ -42,6 +42,10 @@ export default {
     &.block0 {
       background-image: linear-gradient(to bottom right, #279df9, #30a9d8);
     }
+
+    &.block4 {
+      background-image: linear-gradient(to bottom right, #f4f3f3, #d9d8d8);
+    }
   }
 }
 </style>

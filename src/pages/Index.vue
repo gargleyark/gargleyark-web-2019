@@ -3,6 +3,7 @@
     <HomeHeader :data="homeHeaderData"/>
     <SideBlock :data="firstSideBlock"/>
     <TripleBlock :blocks="firstTripleBlock"/>
+    <SideBlock :data="secondSideBlock"/>
   </Layout>
 
   <!--  -->
@@ -45,7 +46,25 @@
         }
       }
     }
-    contentfulSideBlock (id: "1WpDRFUkPwCDqeFZZFlQzp") {
+    firstSideBlock: contentfulSideBlock (id: "1WpDRFUkPwCDqeFZZFlQzp") {
+      alignment
+      colour
+      colourBackdropText
+      whiteBackdropContent {
+        fields {
+          name
+          icon {
+            fields {
+              title
+              file {
+                url
+              }
+            }
+          }
+        }
+      }
+    }
+    secondSideBlock: contentfulSideBlock (id: "XqUxI3ElLzDcsghRFNwlV") {
       alignment
       colour
       colourBackdropText
@@ -122,7 +141,10 @@ export default {
       return this.$page.contentfulHomePageHeader
     },
     firstSideBlock() {
-      return this.$page.contentfulSideBlock
+      return this.$page.firstSideBlock
+    },
+    secondSideBlock() {
+      return this.$page.secondSideBlock
     },
     firstTripleBlock() {
       return this.$page.contentfulTripleBlock.blocks

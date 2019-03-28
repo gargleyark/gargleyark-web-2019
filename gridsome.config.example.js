@@ -5,13 +5,13 @@
 // To restart press CTRL + C in terminal and run `gridsome develop`
 
 module.exports = {
-  siteName: 'Gridsome',
+  siteName: 'gargleyark',
   plugins: [
     {
       use: '@gridsome/source-contentful',
       options: {
-        space: '', // required
-        accessToken: '', // required
+        space: '%space%', // required
+        accessToken: '%token%', // required
         host: 'cdn.contentful.com',
         environment: 'master',
         typeName: 'Contentful'

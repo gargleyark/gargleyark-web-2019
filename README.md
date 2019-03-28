@@ -9,6 +9,6 @@
 1. Clone this repo - `git clone git@github.com:gargleyark/gargleyark-web-2019.git`
 2. `cd gargleyark-web-2019` to open the folder
 3. `npm install` to install dependencies
-4. Add your contentful access tokens to gridsome.config.js
+4. Set up your contentful keys by running `npm setup [contentful space id] [contentful access key]`
 5. `gridsome develop` to start a local dev server at `http://localhost:8080`
 6. Read this unecessary final step

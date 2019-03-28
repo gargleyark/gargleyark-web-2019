@@ -4,7 +4,8 @@
   "scripts": {
     "build": "gridsome build",
     "develop": "gridsome develop",
-    "explore": "gridsome explore"
+    "explore": "gridsome explore",
+    "setup": "node setup.js"
   },
   "dependencies": {
     "@gridsome/source-contentful": "^0.2.1",

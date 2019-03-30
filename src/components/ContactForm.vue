@@ -1,5 +1,5 @@
 <template>
-  <form name="contact" netlify>
+  <article>
     <h1>{{ data.fields.title }}</h1>
     <div class="name">
       <label for="name" :class="{showLabel: name}">{{ data.fields.namePlaceholder }}</label>
@@ -13,9 +13,9 @@
       <label for="message" :class="{showLabel: message}">{{ data.fields.messagePlaceholder }}</label>
       <textarea name="message" v-model="message" spellcheck="true" rows="5" cols="50" tabindex="2" :placeholder="data.fields.messagePlaceholder"></textarea>
     </div>
-    <Button :value="data.fields.buttonValue" :clickEvent="submit" type="submit" action="/"/>
+    <Button :value="data.fields.buttonValue" :clickEvent="submit"/>
     <p v-if="errorMessage">{{ errorMessage }}</p>
-  </form>
+  </article>
 </template>
 
 <script>

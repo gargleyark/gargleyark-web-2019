@@ -1,21 +1,20 @@
 <template>
   <Layout>
     <article>
-      <iframe src="//lightwidget.com/widgets/8e788a9fdeff58c28f636619c758f953.html" scrolling="no" allowtransparency="true" class="lightwidget-widget" style="width:100%;border:0;overflow:hidden;"></iframe>
+      <div class="powr-instagram-feed" id="296e823c_1553989357"></div>
     </article>
   </Layout>
 </template>
 
 <script>
-
 export default {
   metaInfo: {
     title: 'About us'
   },
   mounted() {
-    const lightwidgetScript = document.createElement('script')
-    lightwidgetScript.setAttribute('src', '//cdn.lightwidget.com/widgets/lightwidget.js')
-    document.head.appendChild(lightwidgetScript)
+    const instagramScript = document.createElement('script')
+    instagramScript.setAttribute('src', '//www.powr.io/powr.js?platform=html')
+    document.head.appendChild(instagramScript)
   },
 }
 </script>

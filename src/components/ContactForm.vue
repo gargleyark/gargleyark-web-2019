@@ -13,7 +13,7 @@
       <label for="message" :class="{showLabel: message}">{{ data.fields.messagePlaceholder }}</label>
       <textarea name="message" v-model="message" spellcheck="true" rows="5" cols="50" tabindex="2" :placeholder="data.fields.messagePlaceholder"></textarea>
     </div>
-    <Button :value="data.fields.buttonValue" :clickEvent="submit" />
+    <Button :value="data.fields.buttonValue" :clickEvent="submit" type="submit" action="/"/>
     <p v-if="errorMessage">{{ errorMessage }}</p>
   </form>
 </template>

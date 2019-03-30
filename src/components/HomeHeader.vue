@@ -2,7 +2,7 @@
   <article class="home-page-header">
       <article class="header-description">
         <section v-for="(link, i) in pageHeader" :index="link.linkName" class="links">
-          <p><a :href="link.linkUrl">{{ link.linkName }}</a><span v-if="i === pageHeader.length - 2"> &</span></p>
+          <p><g-link :href="link.linkUrl">{{ link.linkName }}</g-link><span v-if="i === pageHeader.length - 2"> &</span></p>
         </section>
         <section>
           <p class="subtext" v-html="subText"></p>

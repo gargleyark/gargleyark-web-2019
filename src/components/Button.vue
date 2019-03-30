@@ -13,8 +13,8 @@ export default {
 
 <style scoped lang="scss">
 button {
-  margin: auto;
   margin-bottom: 18px;
+  margin-top: 18px;
   display: block;
   height: 50px;
   border: 2px solid #279df9;

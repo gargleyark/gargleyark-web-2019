@@ -83,6 +83,12 @@ textarea {
   resize: vertical;
 }
 
+h1 {
+  padding-left: 8px;
+  margin-bottom: 8px;
+  font-size: 32px;
+}
+
 input,
 textarea {
   color: #999;

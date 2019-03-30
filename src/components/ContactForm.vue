@@ -1,5 +1,5 @@
 <template>
-  <form>
+  <form name="contact" netlify>
     <h1>{{ data.fields.title }}</h1>
     <div class="name">
       <label for="name" :class="{showLabel: name}">{{ data.fields.namePlaceholder }}</label>

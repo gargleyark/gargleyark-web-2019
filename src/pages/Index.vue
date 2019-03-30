@@ -2,7 +2,7 @@
   <Layout>
     <HomeHeader :data="homeHeaderData"/>
     <SideBlock :data="firstSideBlock"/>
-    <TripleBlock :blocks="firstTripleBlock"/>
+    <TripleBlock :blocks="firstTripleBlock" id="jobs"/>
     <SideBlock :data="secondSideBlock"/>
   </Layout>
 

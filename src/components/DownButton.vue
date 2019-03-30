@@ -3,15 +3,7 @@
 </template>
 
 <script>
-import Break from '~/components/Break.vue'
-import DownButton from '~/components/DownButton.vue'
-import marked from 'marked'
-
 export default {
-  components: {
-    Break,
-    DownButton,
-  },
   props: {
     scrollAmount: [String, Number]
   },

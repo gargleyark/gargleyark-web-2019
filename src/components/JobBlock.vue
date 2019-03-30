@@ -46,6 +46,23 @@ export default {
     text-align: center;
   }
 
+  ul {
+    padding: 0px;
+  }
+
+  li {
+    list-style: none;
+
+    &:before {
+      content: '';
+      height: 10px;
+      margin-top: 15px;
+      margin-bottom: 15px;
+      background-color: rgba(74, 74, 74, 0.08);
+      display: block;
+    }
+  }
+
   .company {
     display: flex;
     flex-direction: row;

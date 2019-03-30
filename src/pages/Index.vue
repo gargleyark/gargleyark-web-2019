@@ -77,6 +77,7 @@
       whiteBackdropContent {
         fields {
           title
+          namePlaceholder
           emailPlaceholder
           messagePlaceholder
           buttonValue

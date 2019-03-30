@@ -2,20 +2,20 @@
   <article class="home-page-header">
       <article class="header-description">
         <section v-for="(link, i) in pageHeader" :index="link.linkName" class="links">
-          <p><g-link :to="{ name: link.linkUrl }">{{ link.linkName }}</g-link><span v-if="i === pageHeader.length - 2"> &</span></p>
+          <p><g-link :to="link.linkUrl">{{ link.linkName }}</g-link><span v-if="i === pageHeader.length - 2"> &</span></p>
         </section>
         <section>
           <p class="subtext" v-html="subText"></p>
         </section>
         <section class="social">
           <a  v-for="(button, i) in socialMediaButtons" :index="button.name" :href="button.link" class="social-media-button">
-            <g-image :alt="button.name" :src="button.image" />
+            <img :alt="button.name" :src="button.image" />
           </a>
         </section>
         <DownButton class="down-button-header" scrollAmount="768"/>
       </article>
       <article class="header-image">
-        <g-image alt="oh look it's Mike" :src="mainImage" />
+        <img alt="oh look it's Mike" :src="mainImage" />
       </article>
     </article>
 </template>

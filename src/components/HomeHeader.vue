@@ -5,7 +5,7 @@
         <p><g-link :to="link.linkUrl">{{ link.linkName }}</g-link><span v-if="i === pageHeader.length - 2"> &</span></p>
       </section>
       <section>
-        <p class="subtext" v-html="subText"></p>
+        <div class="subtext" v-html="subText"></div>
       </section>
       <section class="social">
         <a  v-for="(button, i) in socialMediaButtons" :index="button.name" :href="button.link" class="social-media-button">

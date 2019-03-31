@@ -51,6 +51,7 @@
       colour
       colourBackdropText
       whiteBackgroundContentType
+      swapContent
       whiteBackdropContent {
         fields {
           title
@@ -74,6 +75,7 @@
       colour
       colourBackdropText
       whiteBackgroundContentType
+      swapContent
       whiteBackdropContent {
         fields {
           title

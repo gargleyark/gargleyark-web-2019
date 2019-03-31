@@ -4,3 +4,11 @@
     <p></p>
   </Layout>
 </template>
+
+<script>
+export default {
+  metaInfo: {
+    title: 'What?'
+  }
+}
+</script>

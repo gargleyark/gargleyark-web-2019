@@ -6,9 +6,6 @@
 
 <script>
 export default {
-  metaInfo: {
-    title: 'Bookbinding Widget'
-  },
   mounted() {
     const instagramScript = document.createElement('script')
     instagramScript.setAttribute('src', '//apps.elfsight.com/p/platform.js')

@@ -1,20 +1,23 @@
 <template>
   <Layout>
-    <article>
-      <div class="powr-instagram-feed" id="296e823c_1553989357"></div>
+    <article class="bookbinding">
+      <BookbindingWidget />
     </article>
   </Layout>
 </template>
 
 <script>
+import BookbindingWidget from '~/components/BookbindingWidget'
+
 export default {
   metaInfo: {
     title: 'About us'
   },
-  mounted() {
-    const instagramScript = document.createElement('script')
-    instagramScript.setAttribute('src', '//www.powr.io/powr.js?platform=html')
-    document.head.appendChild(instagramScript)
+  components: {
+    BookbindingWidget
   },
 }
 </script>
+
+<style lang="scss">
+</style>

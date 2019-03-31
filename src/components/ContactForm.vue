@@ -43,22 +43,26 @@ export default {
   },
   methods: {
     submit() {
-      if (!this.invalidEmail && this.email.length && this.name.length && this.message.length) {
-        console.info(1)
+      const badInputs = []
+      if (!this.email.length || this.invalidEmail) {
+        badInputs.push('email')
+      }
+      if (!this.message.length) {
+        badInputs.push('message');
+      }
+      if (!this.name.length) {
+        badInputs.push('name');
+      }
+      if (badInputs.length > 1) {
+        badInputs[badInputs.length - 1] = `and ${badInputs[badInputs.length - 1]}`
+      }
+
+      if (!badInputs.length) {
+        this.name = ''
+        this.email = ''
+        this.message = ''
+        this.errorMessage = ''
       } else {
-        const badInputs = []
-        if (!this.email.length || this.invalidEmail) {
-          badInputs.push('email')
-        }
-        if (!this.message.length) {
-          badInputs.push('message');
-        }
-        if (!this.name.length) {
-          badInputs.push('name');
-        }
-        if (badInputs.length > 1) {
-          badInputs[badInputs.length - 1] = `and ${badInputs[badInputs.length - 1]}`
-        }
         this.errorMessage = `Unable to send with invalid ${badInputs.join(', ')}.`
       }
     }

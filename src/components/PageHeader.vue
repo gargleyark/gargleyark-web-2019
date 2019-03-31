@@ -2,7 +2,7 @@
   <article class="page-header">
     <article class="header-description">
       <section class="links">
-        <p>Bookbinding</p>
+        <p>{{ title }}</p>
       </section>
     </article>
     <article class="header-image">
@@ -19,7 +19,7 @@ export default {
   components: {
   },
   props: {
-    data: Object
+    title: String
   },
   computed: {
   }

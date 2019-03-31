@@ -1,7 +1,7 @@
 <template>
   <Layout>
     <article class="bookbinding">
-      <PageHeader />
+      <PageHeader :title="pageTitle" />
       <SideBlock :data="firstSideBlock" />
     </article>
   </Layout>
@@ -15,6 +15,9 @@
       colourBackdropText
       whiteBackgroundContentType
       swapContent
+    }
+    pageHeader: contentfulPageHeader (id: "1s5b10glRIco4XerC6UKeJ") {
+      pageTitle
     }
   }
 </page-query>
@@ -36,6 +39,9 @@ export default {
   computed: {
     firstSideBlock() {
       return this.$page.firstSideBlock
+    },
+    pageTitle() {
+      return this.$page.pageHeader.pageTitle
     }
   }
 }

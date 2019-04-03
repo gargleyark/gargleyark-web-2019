@@ -5,7 +5,7 @@
 <script>
 export default {
   props: {
-    data: [String]
+    data: String
   }
 }
 </script>

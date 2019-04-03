@@ -2,7 +2,9 @@
   <Layout>
     <HomeHeader :data="homeHeaderData"/>
     <SideBlock :data="firstSideBlock"/>
-    <TripleBlock :blocks="firstTripleBlock" id="jobs"/>
+    <MultiBlock :blocks="firstMultiBlock" id="jobs">
+      <template v-slot:default="slot"><JobBlock :job="slot.data.fields"/></template>
+    </MultiBlock>
     <SideBlock :data="secondSideBlock"/>
   </Layout>
 
@@ -132,7 +134,8 @@
 <script>
 import HomeHeader from '~/components/HomeHeader.vue'
 import SideBlock from '~/components/SideBlock.vue'
-import TripleBlock from '~/components/TripleBlock.vue'
+import MultiBlock from '~/components/MultiBlock.vue'
+import JobBlock from '~/components/JobBlock.vue'
 
 export default {
   metaInfo: {
@@ -147,7 +150,8 @@ export default {
   components: {
     HomeHeader,
     SideBlock,
-    TripleBlock
+    MultiBlock,
+    JobBlock
   },
   computed: {
     homeHeaderData() {
@@ -159,7 +163,7 @@ export default {
     secondSideBlock() {
       return this.$page.secondSideBlock
     },
-    firstTripleBlock() {
+    firstMultiBlock() {
       return this.$page.contentfulTripleBlock.blocks
     }
   }

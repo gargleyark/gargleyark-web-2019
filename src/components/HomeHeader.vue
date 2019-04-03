@@ -8,7 +8,7 @@
         <div class="subtext" v-html="subText"></div>
       </section>
       <section class="social">
-        <a  v-for="(button, i) in socialMediaButtons" :index="button.name" :href="button.link" class="social-media-button">
+        <a  v-for="button in socialMediaButtons" :index="button.name" :href="button.link" class="social-media-button">
           <img :alt="button.name" :src="button.image" />
         </a>
       </section>

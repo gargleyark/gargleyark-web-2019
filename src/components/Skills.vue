@@ -1,6 +1,6 @@
 <template>
   <div class="skills" :class="[size, {white: white}]">
-    <a  v-for="(skill, i) in data" :index="skill.name" class="skill" :title="skill.name">
+    <a  v-for="skill in data" :index="skill.name" class="skill" :title="skill.name">
       <img :alt="skill.name" :src="skill.image" />
     </a>
   </div>

@@ -1,18 +1,15 @@
 <template>
   <article class="triple-block">
-      <JobBlock v-for="(block, index) in blocks" :key="block.roleTitle" :job="block.fields" class="block" :class="'block' + index"/>
-    </article>
+    <section class="block" :class="'block' + index" v-for="(block, index) in blocks" :key="index">
+      <slot :data="block"></slot>
+    </section>
+  </article>
 </template>
 
 <script>
-import JobBlock from '~/components/JobBlock.vue'
-
 export default {
   props: {
     blocks: Array
-  },
-  components: {
-    JobBlock
   }
 }
 </script>

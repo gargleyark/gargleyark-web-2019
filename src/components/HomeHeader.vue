@@ -1,16 +1,16 @@
 <template>
   <article class="home-page-header">
     <article class="header-description">
-      <section v-for="(link, i) in pageHeader" :index="link.linkName" class="links">
+      <section v-for="(link, i) in pageHeader" :key="link.linkName" class="links">
         <p><g-link :to="link.linkUrl">{{ link.linkName }}</g-link><span v-if="i === pageHeader.length - 2"> &</span></p>
       </section>
       <section>
         <div class="subtext" v-html="subText"></div>
       </section>
       <section class="social">
-        <a  v-for="button in socialMediaButtons" :index="button.name" :href="button.link" class="social-media-button">
+        <g-link  v-for="button in socialMediaButtons" :key="button.name" :to="button.link" class="social-media-button">
           <img :alt="button.name" :src="button.image" />
-        </a>
+        </g-link>
       </section>
       <DownButton class="down-button-header" scrollAmount="768"/>
     </article>
@@ -22,8 +22,8 @@
 
 
 <script>
-import Break from '~/components/Break.vue'
-import DownButton from '~/components/DownButton.vue'
+import Break from '~/components/Break'
+import DownButton from '~/components/DownButton'
 import marked from 'marked'
 
 export default {
@@ -44,10 +44,7 @@ export default {
     mainImage() { return this.data.mainImage.fields.file.url },
   }
 }
-</script>
-
-
-    
+</script> 
 
 <style scoped lang="scss">
 .home-page-header {

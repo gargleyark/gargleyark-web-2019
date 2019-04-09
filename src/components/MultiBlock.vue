@@ -1,5 +1,5 @@
 <template>
-  <article class="triple-block">
+  <article class="triple-block" :class="{reverse: reverse}">
     <section class="block" :class="'block' + index" v-for="(block, index) in blocks" :key="index">
       <slot :data="block"></slot>
     </section>
@@ -9,7 +9,8 @@
 <script>
 export default {
   props: {
-    blocks: Array
+    blocks: Array,
+    reverse: Boolean
   }
 }
 </script>
@@ -22,6 +23,14 @@ export default {
 
   @media only screen and (min-width: 768px) {
     flex-direction: row-reverse;
+  }
+
+  &.reverse {
+    flex-direction: column;
+
+    @media only screen and (min-width: 768px) {
+      flex-direction: row;
+    }
   }
 
   .block {

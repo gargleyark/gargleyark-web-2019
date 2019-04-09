@@ -2,7 +2,7 @@
   <Layout>
     <article class="artwork">
       <PageHeader :title="pageTitle" />
-      <Gallery :images="images"/>
+      <Gallery :images="images" />
     </article>
   </Layout>
 </template>

@@ -3,7 +3,7 @@
     <div class="date"><span>{{ startDate }}</span> - <span>{{ endDate }}</span></div>
       <h2>{{ roleTitle }}</h2>
       <div class="company">
-        <img v-for="(icon, index) in companyIcon" :index="index" :src="icon.image"/>
+        <img v-for="(icon, index) in companyIcon" :index="index" :src="icon.image" :alt="icon.title"/>
       </div>
       <Skills :data="skills" size="small" white="true"/>
       <div class="description" v-html="description"></div>
@@ -12,7 +12,7 @@
 
 <script>
 import marked from 'marked'
-import Skills from '~/components/Skills.vue'
+import Skills from '~/components/Skills'
 
 export default {
   props: {
@@ -30,8 +30,8 @@ export default {
       fields: {name, icon: { fields: { file: { url }}}}
     }) => ({ name, image: url }))},
     companyIcon() { return this.job.companyIcon.map(({
-      fields: { file: { url }}
-    }) => ({ image: url }))}
+      fields: { file: { url }, title}
+    }) => ({ image: url, title }))}
   }
 }
 </script>

@@ -2,7 +2,7 @@
   <article class="home-page-header">
     <article class="header-description">
       <section v-for="(link, i) in pageHeader" :key="link.linkName" class="links">
-        <p><g-link :to="link.linkUrl">{{ link.linkName }}</g-link><span v-if="i === pageHeader.length - 2"> &</span></p>
+        <p :style="{ zIndex: (10 - i) }"><g-link :to="link.linkUrl">{{ link.linkName }}</g-link><span v-if="i === pageHeader.length - 2"> &</span></p>
       </section>
       <section>
         <div class="subtext" v-html="subText"></div>
@@ -109,6 +109,7 @@ article {
       font-size: 52px;
       line-height: 1;
       color: #333;
+      position: relative;
 
       > a {
         font-size: 52px;

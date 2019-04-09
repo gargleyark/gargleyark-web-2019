@@ -1,5 +1,5 @@
 <template>
-  <article>
+  <article class="container">
     <input type="checkbox" />
     <section class="menuContainer">
       <svg class="ham hamRotate ham8" viewBox="0 0 100 100" width="80">
@@ -20,7 +20,9 @@
           <g-link :to="link.linkUrl">{{ link.linkName }}</g-link>
         </li>
       </ul>
-      <SocialButtons :socialMediaButtons="socialIcons" />
+      <article class="bottom">
+        <SocialButtons :socialMediaButtons="socialIcons" />
+      </article>
     </section>
   </article>
 </template>
@@ -40,7 +42,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
-article {
+.container {
   position: fixed;
   top: 0px;
   left: 0px;
@@ -131,10 +133,9 @@ input:hover ~ .menuContainer .line {
   margin: 0px;
   height: 100%;
   flex-direction: column;
-  padding-left: 60px;
 
   ul {
-    padding: 0px;
+    padding-left: 60px;
     padding-bottom: 60px;
   }
 
@@ -156,6 +157,12 @@ input:hover ~ .menuContainer .line {
     &:hover {
       color: #333;
     }
+  }
+
+  .bottom {
+    height: 100%;
+    background: white;
+    padding: 60px;
   }
 }
 

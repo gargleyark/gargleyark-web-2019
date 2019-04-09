@@ -1,9 +1,9 @@
 <template>
-  <div class="social">
+  <section class="social">
     <g-link  v-for="button in socialMediaButtons" :key="button.name" :to="button.link" class="social-media-button">
       <img :alt="button.name" :src="button.image" />
     </g-link>
-  </div>
+  </section>
 </template>
 
 <script>

@@ -4,6 +4,7 @@
       <BurgerMenu :menuLinks="menuLinks" :socialIcons="socialIcons" />
     </header>
     <slot/>
+    <Footer />
   </div>
 </template>
 
@@ -38,9 +39,11 @@ query {
 
 <script>
 import BurgerMenu from '~/components/BurgerMenu'
+import Footer from '~/components/Footer'
 
 export default {
   components: {
+    Footer,
     BurgerMenu
   },
   computed: {

@@ -91,6 +91,7 @@ article {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
+    border-bottom: 5px solid #666;
 
     @media only screen and (min-width: 768px) {
       width: 40%;

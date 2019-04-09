@@ -14,14 +14,27 @@
               d="m 70,67 h -40 c 0,0 -7.5,-0.802118 -7.5,-8.365747 0,-7.563629 7.5,-8.634253 7.5,-8.634253 h 12" />
       </svg>
     </section>
-    <ul class="menu"></ul>
+    <section class="menu">
+      <ul>
+        <li v-for="link in menuLinks" :key="link.linkName">
+          <g-link :to="link.linkUrl">{{ link.linkName }}</g-link>
+        </li>
+      </ul>
+      <SocialButtons :socialMediaButtons="socialIcons" />
+    </section>
   </article>
 </template>
 
 <script>
+import SocialButtons from '~/components/SocialButtons'
+
 export default {
   props: {
-    links: Array
+    menuLinks: Array,
+    socialIcons: Array
+  },
+  components: {
+    SocialButtons
   }
 }
 </script>
@@ -36,11 +49,11 @@ article {
 
   input {
     display: block;
-    width: 44px;
-    height: 44px;
+    width: 57px;
+    height: 57px;
     position: absolute;
-    top: 16px;
-    right: 15px;
+    top: 8px;
+    right: 8px;
     cursor: pointer;
     opacity: 0;
     z-index: 2;
@@ -52,7 +65,7 @@ article {
 .ham {
   cursor: pointer;
   -webkit-tap-highlight-color: transparent;
-  transition: transform 400ms;
+  transition: transform 300ms;
   -moz-user-select: none;
   -webkit-user-select: none;
   -ms-user-select: none;
@@ -70,7 +83,7 @@ input:checked ~ .menuContainer .hamRotate180 {
 
 .line {
   fill: none;
-  transition: stroke-dasharray 400ms, stroke-dashoffset 400ms;
+  transition: stroke-dasharray 300ms, stroke-dashoffset 300ms;
   stroke: #fff;
   stroke-width: 5.5;
   stroke-linecap: round;
@@ -82,12 +95,12 @@ input:checked ~ .menuContainer .hamRotate180 {
 .ham8 .middle {
   stroke-dasharray: 40 142;
   transform-origin: 50%;
-  transition: transform 400ms;
+  transition: transform 300ms;
 }
 .ham8 .bottom {
   stroke-dasharray: 40 85;
   transform-origin: 50%;
-  transition: transform 400ms, stroke-dashoffset 400ms;
+  transition: transform 300ms, stroke-dashoffset 300ms;
 }
 input:checked ~ .menuContainer .ham8 .top {
   stroke-dashoffset: -64px;
@@ -99,6 +112,11 @@ input:checked ~ .menuContainer .ham8 .bottom {
   stroke-dashoffset: -64px;
 }
 
+input:checked ~ .menuContainer .line,
+input:hover ~ .menuContainer .line {
+  stroke: orange;
+}
+
 .menu {
   width: 60%;
   background-image: linear-gradient(to bottom right, #f2b754, orange);
@@ -108,10 +126,37 @@ input:checked ~ .menuContainer .ham8 .bottom {
   position: fixed;
   right: -60%;
   top: 0px;
-  transition: right 0.4s;
+  transition: right 0.3s;
   height: 118px;
   margin: 0px;
   height: 100%;
+  flex-direction: column;
+  padding-left: 60px;
+
+  ul {
+    padding: 0px;
+    padding-bottom: 60px;
+  }
+
+  li {
+    list-style: none;
+    margin-top: 20px;
+  }
+
+  a {
+    color: #fff;
+    border-bottom: 5px solid #fff;
+    transition: color 0.3s;
+    font-size: 24px;
+
+    @media only screen and (min-width: 1024px) {
+      font-size: 40px;
+    }
+
+    &:hover {
+      color: #333;
+    }
+  }
 }
 
 input:checked ~ .menu {
@@ -131,7 +176,13 @@ input:checked ~ .menu {
   position: fixed;
   top: 10px;
   right: 10px;
-  background-image: linear-gradient(to bottom right, #f2b754, orange);
+  background-color: orange;
+  transition: background-color 0.3s;
+}
+
+input:checked ~ .menuContainer,
+input:hover ~ .menuContainer {
+  background-color: #fff;
 }
 </style>
 

@@ -1,7 +1,7 @@
 <template>
   <div class="layout">
     <header class="header">
-      <BurgerMenu />
+      <BurgerMenu :menuLinks="menuLinks" :socialIcons="socialIcons" />
     </header>
     <slot/>
   </div>
@@ -12,6 +12,27 @@ query {
   metaData {
     siteName
   }
+  contentfulMenu (id: "5vMJt4FyFK0VUg60ZwQnL0") {
+      links {
+        fields {
+          linkName
+          linkUrl
+        }
+      }
+      socialMediaIcons {
+        fields {
+          name
+          icon {
+            fields {
+              file {
+                url
+              }
+            }
+          }
+          link
+        }
+      }
+    }
 }
 </static-query>
 
@@ -21,6 +42,14 @@ import BurgerMenu from '~/components/BurgerMenu'
 export default {
   components: {
     BurgerMenu
+  },
+  computed: {
+    menuLinks() {
+      return this.$static.contentfulMenu.links.map(({ fields: { linkName, linkUrl }}) => ({ linkName, linkUrl }))
+    },
+    socialIcons() {
+      return this.$static.contentfulMenu.socialMediaIcons.map(({ fields: { link, name, icon: { fields: { file: { url } } }}}) => ({ link, name, image: url }))
+    },
   }
 }
 </script>

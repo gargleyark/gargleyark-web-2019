@@ -7,11 +7,7 @@
       <section>
         <div class="subtext" v-html="subText"></div>
       </section>
-      <section class="social">
-        <g-link  v-for="button in socialMediaButtons" :key="button.name" :to="button.link" class="social-media-button">
-          <img :alt="button.name" :src="button.image" />
-        </g-link>
-      </section>
+      <SocialButtons :socialMediaButtons="socialMediaButtons" />
       <DownButton class="down-button-header" scrollAmount="768"/>
     </article>
     <article class="header-image">
@@ -24,12 +20,14 @@
 <script>
 import Break from '~/components/Break'
 import DownButton from '~/components/DownButton'
+import SocialButtons from '~/components/SocialButtons'
 import marked from 'marked'
 
 export default {
   components: {
     Break,
     DownButton,
+    SocialButtons
   },
   props: {
     data: Object
@@ -59,16 +57,6 @@ export default {
 
   > article {
     padding: 10px;
-  }
-}
-
-.social {
-  text-align: center;
-  margin-bottom: 50px;
-
-  @media only screen and (min-width: 768px) {
-    text-align: left;
-    margin-bottom: auto;
   }
 }
 
@@ -150,22 +138,6 @@ article {
 .subtext {
   margin: 40px 0px;
   max-width: 500px;
-}
-
-.social-media-button {
-  border-bottom: none;
-  margin-right: 20px;
-
-  > img {
-    width: 32px;
-    opacity: 0.7;
-    cursor: pointer;
-    transition: opacity 0.3s;
-
-    &:hover {
-      opacity: 1;
-    }
-  }
 }
 
 .down-button-header {

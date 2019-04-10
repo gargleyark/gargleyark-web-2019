@@ -124,6 +124,8 @@ a {
   justify-content: space-between;
   align-items: center;
   background-color: #f2b754;
+  position: relative;
+  z-index: 11;
 }
 
 .nav__link {

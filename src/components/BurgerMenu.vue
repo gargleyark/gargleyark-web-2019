@@ -126,13 +126,19 @@ input:hover ~ .menuContainer .line {
   display: flex;
   padding: 0px;
   position: fixed;
-  right: -60%;
   top: 0px;
   transition: right 0.3s;
   height: 118px;
   margin: 0px;
   height: 100%;
   flex-direction: column;
+  width: 100%;
+  right: -100%;
+
+  @media only screen and (min-width: 768px) {
+    width: 60%;
+    right: -60%;
+  }
 
   ul {
     padding-left: 60px;

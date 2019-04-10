@@ -35,12 +35,9 @@ export default {
           row.push(image.fields)
         } else {
           rows.push(row)
-          row = []
+          row = [image.fields]
         }
       })
-      if (row.length) {
-        rows.push(row)
-      }
       return rows
     }
   }

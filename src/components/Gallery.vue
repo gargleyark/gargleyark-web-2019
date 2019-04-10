@@ -38,6 +38,9 @@ export default {
           row = [image.fields]
         }
       })
+      if (row.length) {
+        rows.push(row)
+      }
       return rows
     }
   }

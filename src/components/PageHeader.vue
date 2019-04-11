@@ -100,7 +100,7 @@ article {
       font-weight: 700;
       font-size: 52px;
       line-height: 1;
-      font-size: 52px;
+      font-size: 42px;
 
       @media only screen and (min-width: 1024px) {
         font-size: 68px;

@@ -3,10 +3,11 @@
     <article class="header-description">
       <section class="links">
         <p>{{ title }}</p>
+        <div v-if="subtext" v-html="markedSubtext" />
       </section>
     </article>
     <article class="header-image">
-
+      <img v-if="image" :src="image" />
     </article>
   </article>
 </template>
@@ -19,9 +20,14 @@ export default {
   components: {
   },
   props: {
-    title: String
+    title: String,
+    image: String,
+    subtext: String
   },
   computed: {
+    markedSubtext() {
+      return this.subtext ? marked(this.subtext) : ''
+    }
   }
 }
 </script>
@@ -78,10 +84,11 @@ article {
       }
 
       > img {
-        margin-top: auto;
+        margin: auto;
         display: block;
-        height: 740px;
-        margin-bottom: -2px;
+        height: 550px;
+        margin-top: 25px;
+        margin-bottom: 25px;
       }
     }
   }
@@ -103,32 +110,6 @@ article {
       border-bottom: 5px solid #f2b754;
     }
   }
-}
-
-.subtext {
-  margin: 40px 0px;
-  max-width: 500px;
-}
-
-.social-media-button {
-  border-bottom: none;
-  margin-right: 20px;
-
-  > img {
-    width: 32px;
-    opacity: 0.7;
-    cursor: pointer;
-    transition: opacity 0.3s;
-
-    &:hover {
-      opacity: 1;
-    }
-  }
-}
-
-.down-button-header {
-  margin: auto;
-  margin-bottom: 30px;
 }
 </style>
 

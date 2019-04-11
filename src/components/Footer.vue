@@ -1,7 +1,7 @@
 <template>
   <article class="footer">
     <section class="copyright">
-      <p>© Mike Steel, 2019</p>
+      <p>© Mike Steel, {{ year }}</p>
     </section>
     <section class="scroll">
       <ScrollButton scrollAmount="0" direction="up" />
@@ -23,6 +23,11 @@ export default {
   components: {
     ScrollButton,
     SocialButtons
+  },
+  computed: { 
+    year() {
+      return new Date().getFullYear()
+    }
   }
 }
 </script>
@@ -32,8 +37,12 @@ export default {
   color: white;
   height: 180px;
   display: flex;
-  flex-direction: row;
+  flex-direction: column-reverse;
   justify-content: center;
+
+  @media only screen and (min-width: 768px) {
+    flex-direction: row;
+  }
 
   > section {
     margin: auto;
@@ -43,12 +52,20 @@ export default {
   }
 
   > .scroll {
-    width: 20%;
+    width: 100%;
+
+    @media only screen and (min-width: 768px) {
+      width: 20%;
+    }
   }
 
   > .social,
   .copyright {
-    width: 40%;
+    width: 100%;
+
+    @media only screen and (min-width: 768px) {
+      width: 40%;
+    }
 
     > section,
     p {
@@ -56,9 +73,22 @@ export default {
     }
   }
 
+  > .social {
+    display: none;
+
+    @media only screen and (min-width: 768px) {
+      display: flex;
+    }
+  }
+
   .copyright {
     background-image: linear-gradient(to bottom right, #f4f3f3, #d9d8d8);
     color: #333;
+    margin-top: 20px;
+
+    @media only screen and (min-width: 768px) {
+      margin-top: 0px;
+    }
   }
 }
 </style>

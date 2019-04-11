@@ -73,6 +73,14 @@ h4 {
   font-family: 'Overpass', sans-serif;
 }
 
+h1 {
+  font-size: 48px;
+
+  @media only screen and (min-width: 1024px) {
+    font-size: 58px;
+  }
+}
+
 * {
   box-sizing: border-box;
 }

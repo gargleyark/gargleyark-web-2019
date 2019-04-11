@@ -1,5 +1,5 @@
 <template>
-  <section v-text="data"/>
+  <section v-html="data"/>
 </template>
 
 <script>

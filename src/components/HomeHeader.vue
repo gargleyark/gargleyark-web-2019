@@ -8,7 +8,7 @@
         <div class="subtext" v-html="subText"></div>
       </section>
       <SocialButtons :socialMediaButtons="socialMediaButtons" />
-      <DownButton class="down-button-header" scrollAmount="768"/>
+      <ScrollButton class="down-button-header" scrollAmount="768"/>
     </article>
     <article class="header-image">
       <img alt="oh look it's Mike" :src="mainImage" />
@@ -19,14 +19,14 @@
 
 <script>
 import Break from '~/components/Break'
-import DownButton from '~/components/DownButton'
+import ScrollButton from '~/components/ScrollButton'
 import SocialButtons from '~/components/SocialButtons'
 import marked from 'marked'
 
 export default {
   components: {
     Break,
-    DownButton,
+    ScrollButton,
     SocialButtons
   },
   props: {

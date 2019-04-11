@@ -4,7 +4,7 @@
       <BurgerMenu :menuLinks="menuLinks" :socialIcons="socialIcons" />
     </header>
     <slot/>
-    <Footer />
+    <Footer :socialIcons="socialIcons" />
   </div>
 </template>
 

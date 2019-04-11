@@ -1,11 +1,12 @@
 <template>
-  <a @click="scroll"/>
+  <a @click="scroll" :class="direction"/>
 </template>
 
 <script>
 export default {
   props: {
-    scrollAmount: [String, Number]
+    scrollAmount: [String, Number],
+    direction: String
   },
   methods: {
     scroll() {
@@ -30,6 +31,11 @@ a {
   border-radius: 25px;
   transition: background-color 0.3s;
   background-color: #ffffff;
+
+  &.up {
+    transform: rotate(180deg);
+    margin: auto;
+  }
 
   &:after,
   &:before {

@@ -1,20 +1,23 @@
 <template>
   <article>
-    <h1>{{ data.fields.title }}</h1>
-    <div class="name">
-      <label for="name" :class="{showLabel: name}">{{ data.fields.namePlaceholder }}</label>
-      <input name="name" v-model="name" spellcheck="false" maxlength="255" tabindex="1" type="text" :placeholder="data.fields.namePlaceholder">
-    </div>
-    <div class="email">
-      <label for="email" :class="{showLabel: email}">{{ data.fields.emailPlaceholder }}</label>
-      <input name="email" v-model="email" spellcheck="false" maxlength="255" tabindex="1" type="email" :placeholder="data.fields.emailPlaceholder" :class="{invalid: invalidEmail}">
-    </div>
-    <div class="message">
-      <label for="message" :class="{showLabel: message}">{{ data.fields.messagePlaceholder }}</label>
-      <textarea name="message" v-model="message" spellcheck="true" rows="5" cols="50" tabindex="2" :placeholder="data.fields.messagePlaceholder"></textarea>
-    </div>
-    <Button :value="data.fields.buttonValue" :clickEvent="submit"/>
-    <p v-if="errorMessage">{{ errorMessage }}</p>
+    <form name="ask-question" method="post" data-netlify="true" data-netlify-honeypot="bot-field" id="contact">
+      <input type="hidden" name="form-name" value="ask-question" />
+      <h1>{{ data.fields.title }}</h1>
+      <div class="name">
+        <label for="name" :class="{showLabel: name}">{{ data.fields.namePlaceholder }}</label>
+        <input required="true" name="name" v-model="name" spellcheck="false" maxlength="255" tabindex="1" type="text" :placeholder="data.fields.namePlaceholder">
+      </div>
+      <div class="email">
+        <label for="email" :class="{showLabel: email}">{{ data.fields.emailPlaceholder }}</label>
+        <input required="true" name="email" v-model="email" spellcheck="false" maxlength="255" tabindex="1" type="email" :placeholder="data.fields.emailPlaceholder" :class="{invalid: invalidEmail}">
+      </div>
+      <div class="message">
+        <label for="message" :class="{showLabel: message}">{{ data.fields.messagePlaceholder }}</label>
+        <textarea required="true" name="message" v-model="message" spellcheck="true" rows="5" cols="50" tabindex="2" :placeholder="data.fields.messagePlaceholder"></textarea>
+      </div>
+      <Button :value="data.fields.buttonValue" :clickEvent="submit"/>
+      <p v-if="errorMessage">{{ errorMessage }}</p>
+    </form>
   </article>
 </template>
 
@@ -58,10 +61,7 @@ export default {
       }
 
       if (!badInputs.length) {
-        this.name = ''
-        this.email = ''
-        this.message = ''
-        this.errorMessage = ''
+        this.$el.querySelector("#contact").submit()
       } else {
         this.errorMessage = `Unable to send with invalid ${badInputs.join(', ')}.`
       }

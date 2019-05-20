@@ -14,5 +14,17 @@
 
   <body ${bodyAttrs}>
     ${app} ${scripts}
+    <form
+      name="ask-question"
+      method="post"
+      data-netlify="true"
+      data-netlify-honeypot="bot-field"
+      hidden
+    >
+      <input type="hidden" name="form-name" value="ask-question" />
+      <input name="name" type="text" />
+      <input name="email" type="email" />
+      <textarea name="message"></textarea>
+    </form>
   </body>
 </html>

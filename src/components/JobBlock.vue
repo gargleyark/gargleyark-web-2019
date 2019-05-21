@@ -1,18 +1,21 @@
 <template>
   <article class="job-block">
-    <div class="date"><span>{{ startDate }}</span> - <span>{{ endDate }}</span></div>
-      <h2>{{ roleTitle }}</h2>
-      <div class="company">
-        <img v-for="(icon, index) in companyIcon" :index="index" :src="icon.image" :alt="icon.title"/>
-      </div>
-      <Skills :data="skills" size="small" white="true"/>
-      <div class="description" v-html="description"></div>
+    <div class="date">
+      <span>{{ startDate }}</span> -
+      <span>{{ endDate }}</span>
+    </div>
+    <h2>{{ roleTitle }}</h2>
+    <div class="company">
+      <img v-for="(icon, index) in companyIcon" :index="index" :src="icon.image" :alt="icon.title">
+    </div>
+    <Skills :data="skills" size="small" white="true"/>
+    <div class="description" v-html="description"></div>
   </article>
 </template>
 
 <script>
-import marked from 'marked'
-import Skills from '~/components/Skills'
+import marked from "marked";
+import Skills from "~/components/Skills";
 
 export default {
   props: {
@@ -21,19 +24,69 @@ export default {
   components: {
     Skills
   },
+  methods: {
+    getDate(dateString) {
+      if (!dateString) {
+        return "now";
+      }
+
+      const dateNums = dateString.match(/\d+/g);
+      const month = {
+        "01": "Jan",
+        "02": "Feb",
+        "03": "Mar",
+        "04": "Apr",
+        "05": "May",
+        "06": "Jun",
+        "07": "Jul",
+        "08": "Aug",
+        "09": "Sep",
+        "10": "Oct",
+        "11": "Nov",
+        "12": "Dec"
+      }[dateNums[1]];
+      return `${month} ${dateNums[0]}`;
+    }
+  },
   computed: {
-    roleTitle() { return this.job.roleTitle },
-    startDate() { return this.job.startDate },
-    endDate() { return this.job.endDate || 'now' },
-    description() { return marked(this.job.description) },
-    skills() { return this.job.skills.map(({
-      fields: {name, icon: { fields: { file: { url }}}}
-    }) => ({ name, image: url }))},
-    companyIcon() { return this.job.companyIcon.map(({
-      fields: { file: { url }, title}
-    }) => ({ image: url, title }))}
+    roleTitle() {
+      return this.job.roleTitle;
+    },
+    startDate() {
+      return this.getDate(this.job.startDate);
+    },
+    endDate() {
+      return this.getDate(this.job.endDate);
+    },
+    description() {
+      return marked(this.job.description);
+    },
+    skills() {
+      return this.job.skills.map(
+        ({
+          fields: {
+            name,
+            icon: {
+              fields: {
+                file: { url }
+              }
+            }
+          }
+        }) => ({ name, image: url })
+      );
+    },
+    companyIcon() {
+      return this.job.companyIcon.map(
+        ({
+          fields: {
+            file: { url },
+            title
+          }
+        }) => ({ image: url, title })
+      );
+    }
   }
-}
+};
 </script>
 
 <style lang="scss">
@@ -54,7 +107,7 @@ export default {
     list-style: none;
 
     &:before {
-      content: '';
+      content: "";
       height: 10px;
       margin-top: 15px;
       margin-bottom: 15px;

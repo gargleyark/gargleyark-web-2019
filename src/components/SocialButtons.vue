@@ -1,8 +1,13 @@
 <template>
   <section class="social">
-    <g-link  v-for="button in socialMediaButtons" :key="button.name" :to="button.link" class="social-media-button">
-      <img :alt="button.name" :src="button.image" />
-    </g-link>
+    <a
+      v-for="button in socialMediaButtons"
+      :key="button.name"
+      :href="button.link"
+      class="social-media-button"
+    >
+      <img :alt="button.name" :src="button.image">
+    </a>
   </section>
 </template>
 
@@ -10,8 +15,8 @@
 export default {
   props: {
     socialMediaButtons: Array
-  },
-}
+  }
+};
 </script>
 
 <style scoped lang="scss">

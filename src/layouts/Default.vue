@@ -1,10 +1,10 @@
 <template>
   <div class="layout">
     <header class="header">
-      <BurgerMenu :menuLinks="menuLinks" :socialIcons="socialIcons" />
+      <BurgerMenu :menuLinks="menuLinks" :socialIcons="socialIcons"/>
     </header>
     <slot/>
-    <Footer :socialIcons="socialIcons" />
+    <Footer :socialIcons="socialIcons"/>
   </div>
 </template>
 
@@ -38,8 +38,8 @@ query {
 </static-query>
 
 <script>
-import BurgerMenu from '~/components/BurgerMenu'
-import Footer from '~/components/Footer'
+import BurgerMenu from "~/components/BurgerMenu";
+import Footer from "~/components/Footer";
 
 export default {
   components: {
@@ -48,19 +48,33 @@ export default {
   },
   computed: {
     menuLinks() {
-      return this.$static.contentfulMenu.links.map(({ fields: { linkName, linkUrl }}) => ({ linkName, linkUrl }))
+      return this.$static.contentfulMenu.links.map(
+        ({ fields: { linkName, linkUrl } }) => ({ linkName, linkUrl })
+      );
     },
     socialIcons() {
-      return this.$static.contentfulMenu.socialMediaIcons.map(({ fields: { link, name, icon: { fields: { file: { url } } }}}) => ({ link, name, image: url }))
-    },
+      return this.$static.contentfulMenu.socialMediaIcons.map(
+        ({
+          fields: {
+            link,
+            name,
+            icon: {
+              fields: {
+                file: { url }
+              }
+            }
+          }
+        }) => ({ link, name, image: url })
+      );
+    }
   }
-}
+};
 </script>
 
 
 <style lang="scss">
 body {
-  font-family: 'Palanquin', sans-serif;
+  font-family: "Palanquin", sans-serif;
   margin: 0;
   padding: 0;
   line-height: 1.5;
@@ -70,7 +84,7 @@ h1,
 h2,
 h3,
 h4 {
-  font-family: 'Overpass', sans-serif;
+  font-family: "Overpass", sans-serif;
 }
 
 h1 {
@@ -87,7 +101,7 @@ h1 {
 
 .grey {
   h2:before {
-    content: '';
+    content: "";
     height: 10px;
     margin-top: 0px;
     margin-bottom: 45px;
@@ -102,6 +116,10 @@ h1 {
     color: #888;
     width: 40%;
     display: inline-block;
+
+    @media only screen and (min-width: 768px) {
+      width: 80%;
+    }
   }
 
   a {

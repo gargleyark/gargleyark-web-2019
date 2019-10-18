@@ -1,3 +1,17 @@
+# New tab, who dis
+This is the codebase for [gargleyark.com](https://www.gargleyark.com).
+
+# TODO
+### Important
+- Where the tests at? needs some DDT
+- Pages are super static, should be using templates to generate content dynamically
+- Integrate form with automatic email triggering in netlify
+
+### ¯\\_(ツ)_/¯ Why not
+- More easter eggs
+- Better landing portrait
+- I don't like the menu
+
 # Set up instructions
 
 ### 1. Install Gridsome CLI tool if you don't have

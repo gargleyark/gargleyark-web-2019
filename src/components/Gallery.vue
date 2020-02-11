@@ -1,7 +1,7 @@
 <template>
     <article class="gallery">
       <section v-for="(row, index) in rows" :key="index">
-        <MultiBlock :blocks="row" :reverse="index % 2 === 0">
+        <MultiBlock :blocks="row" :reverse="index % 2 === 0" :row="true">
           <template v-slot:default="slot">
             <section class="gallery-block">
               <p class="image" :style="{ backgroundImage: `url(${slot.data.image.fields.file.url})` }">

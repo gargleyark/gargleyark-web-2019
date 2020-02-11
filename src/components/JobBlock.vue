@@ -1,15 +1,19 @@
 <template>
   <article class="job-block">
-    <div class="date">
-      <span>{{ startDate }}</span> -
-      <span>{{ endDate }}</span>
-    </div>
-    <h2>{{ roleTitle }}</h2>
-    <div class="company">
-      <img v-for="(icon, index) in companyIcon" :index="index" :src="icon.image" :alt="icon.title">
-    </div>
-    <Skills :data="skills" size="small" white="true"/>
-    <div class="description" v-html="description"></div>
+    <section class="job-text">
+      <div class="company">
+        <img v-for="(icon, index) in companyIcon" :index="index" :src="icon.image" :alt="icon.title">
+      </div>
+      <div class="date">
+        <span>{{ startDate }}</span> -
+        <span>{{ endDate }}</span>
+      </div>
+      <h2>{{ roleTitle }}</h2>
+      <div class="description" v-html="description"></div>
+    </section>
+    <section class="job-skills">
+      <Skills :data="skills" size="medium" white="true"/>
+    </section>
   </article>
 </template>
 
@@ -95,6 +99,28 @@ export default {
   flex-direction: column;
   display: flex;
 
+  @media only screen and (min-width: 768px) {
+    flex-direction: row-reverse;
+  }
+
+  .job-text {
+    @media only screen and (min-width: 768px) {
+      padding: 40px;
+      width: 60%;
+    }
+  }
+
+  .job-skills {
+    flex-direction: row-reverse;
+
+    @media only screen and (min-width: 768px) {
+      width: 40%;
+      padding: 40px;
+      max-width: 360px;
+      margin: auto;
+    }
+  }
+
   h2 {
     text-align: center;
   }
@@ -120,7 +146,7 @@ export default {
     display: flex;
     flex-direction: row;
     height: 40px;
-    justify-content: space-around;
+    justify-content: center;
     margin-bottom: 20px;
 
     > img {

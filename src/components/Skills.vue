@@ -72,6 +72,24 @@ export default {
     }
   }
 
+  &.medium {
+    justify-content: center;
+
+    @media only screen and (min-width: 768px) {
+      justify-content: flex-start;
+    }
+
+    .skill {
+      width: 50px;
+      margin: 10px;
+
+      &:hover {
+        width: 70px;
+        margin: 0px;
+      }
+    }
+  }
+
   &.white {
     .skill {
       > img {

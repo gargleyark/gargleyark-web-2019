@@ -1,7 +1,7 @@
 <template>
     <article class="writing">
       <section v-for="(row, index) in rows" :key="index" class="shelf">
-        <MultiBlock :blocks="row" :reverse="index % 2 === 0">
+        <MultiBlock :blocks="row" :reverse="index % 2 === 0" :row="true">
           <template v-slot:default="slot">
             <section class="writing-block" @click="() => open(slot.data.text, slot.data.externalLink)">
               <div class="book">

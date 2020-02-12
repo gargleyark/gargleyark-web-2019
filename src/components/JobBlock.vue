@@ -134,7 +134,7 @@ export default {
 
     &:before {
       content: "";
-      height: 10px;
+      height: 5px;
       margin-top: 15px;
       margin-bottom: 15px;
       background-color: rgba(74, 74, 74, 0.08);

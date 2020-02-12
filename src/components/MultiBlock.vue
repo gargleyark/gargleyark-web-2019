@@ -1,6 +1,6 @@
 <template>
   <article class="triple-block" :class="{reverse: reverse, row: row}">
-    <section class="block" :class="'block' + (index % 3)" v-for="(block, index) in blocks" :key="index">
+    <section class="block" :class="'block' + ((index % 3) - 1)" v-for="(block, index) in blocks" :key="index">
       <slot :data="block"></slot>
     </section>
   </article>

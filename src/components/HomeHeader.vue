@@ -24,6 +24,12 @@
     </article>
     <article class="header-image">
       <img alt="oh look it's Mike" :src="mainImage" />
+      <img
+        alt="oh look it's Mike"
+        :src="spaceImage"
+        id="spaceImage"
+        class="spaceImage"
+      />
     </article>
   </article>
 </template>
@@ -71,11 +77,26 @@ export default {
     mainImage() {
       return this.data.mainImage.fields.file.url;
     },
+    spaceImage() {
+      return this.data.spaceImage.fields.file.url;
+    },
   },
 };
 </script>
 
 <style scoped lang="scss">
+.spaceImage {
+  position: absolute;
+  left: 0px;
+  top: 30px;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.spaceImage.show {
+  opacity: 1;
+}
+
 .home-page-header {
   flex-direction: column;
   display: flex;
@@ -96,6 +117,7 @@ article {
   max-width: 500px;
 
   &.header-image {
+    position: relative;
     display: none;
     > img {
       height: 350px;

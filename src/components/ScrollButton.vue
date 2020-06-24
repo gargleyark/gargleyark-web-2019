@@ -1,23 +1,23 @@
 <template>
-  <a @click="scroll" :class="direction"/>
+  <a @click="scroll" :class="direction" />
 </template>
 
 <script>
 export default {
   props: {
     scrollAmount: [String, Number],
-    direction: String
+    direction: String,
   },
   methods: {
     scroll() {
       window.scrollTo({
         top: this.scrollAmount,
         left: 0,
-        behavior: 'smooth'
-      })
-    }
-  }
-}
+        behavior: 'smooth',
+      });
+    },
+  },
+};
 </script>
 
 <style scoped lang="scss">
@@ -72,4 +72,3 @@ a {
   }
 }
 </style>
-

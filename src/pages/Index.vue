@@ -1,16 +1,17 @@
 <template>
   <Layout>
-    <HomeHeader :data="homeHeaderData"/>
-    <SideBlock :data="firstSideBlock"/>
+    <HomeHeader :data="homeHeaderData" />
+    <SideBlock :data="firstSideBlock" />
     <MultiBlock :blocks="firstMultiBlock" id="jobs">
-      <template v-slot:default="slot"><JobBlock :job="slot.data.fields"/></template>
+      <template v-slot:default="slot"
+        ><JobBlock :job="slot.data.fields"
+      /></template>
     </MultiBlock>
-    <SideBlock :data="secondSideBlock"/>
+    <SideBlock :data="secondSideBlock" />
   </Layout>
 
   <!--  -->
 </template>
-
 
 <page-query>
   query HomePage {
@@ -39,6 +40,15 @@
         }
       }
       mainImage {
+        fields {
+          title
+          description
+          file {
+            url
+          }
+        }
+      }
+      spaceImage {
         fields {
           title
           description
@@ -132,10 +142,10 @@
 </page-query>
 
 <script>
-import HomeHeader from '~/components/HomeHeader.vue'
-import SideBlock from '~/components/SideBlock.vue'
-import MultiBlock from '~/components/MultiBlock.vue'
-import JobBlock from '~/components/JobBlock.vue'
+import HomeHeader from '~/components/HomeHeader.vue';
+import SideBlock from '~/components/SideBlock.vue';
+import MultiBlock from '~/components/MultiBlock.vue';
+import JobBlock from '~/components/JobBlock.vue';
 
 export default {
   metaInfo: {
@@ -144,31 +154,30 @@ export default {
       lang: 'en',
     },
     bodyAttrs: {
-      class: 'home'
-    }
+      class: 'home',
+    },
   },
   components: {
     HomeHeader,
     SideBlock,
     MultiBlock,
-    JobBlock
+    JobBlock,
   },
   computed: {
     homeHeaderData() {
-      return this.$page.contentfulHomePageHeader
+      return this.$page.contentfulHomePageHeader;
     },
     firstSideBlock() {
-      return this.$page.firstSideBlock
+      return this.$page.firstSideBlock;
     },
     secondSideBlock() {
-      return this.$page.secondSideBlock
+      return this.$page.secondSideBlock;
     },
     firstMultiBlock() {
-      return this.$page.contentfulTripleBlock.blocks
-    }
-  }
-}
+      return this.$page.contentfulTripleBlock.blocks;
+    },
+  },
+};
 </script>
 
-<style scoped lang="scss">
-</style>
+<style scoped lang="scss"></style>

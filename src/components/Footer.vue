@@ -4,7 +4,7 @@
       <p>© Mike Steel, {{ year }}</p>
     </section>
     <section class="scroll">
-      <ScrollButton scrollAmount="0" direction="up" />
+      <RocketButton scrollAmount="0" direction="up" />
     </section>
     <section class="social">
       <SocialButtons :socialMediaButtons="socialIcons" />
@@ -13,23 +13,23 @@
 </template>
 
 <script>
-import ScrollButton from '~/components/ScrollButton'
-import SocialButtons from '~/components/SocialButtons'
+import RocketButton from '~/components/RocketButton';
+import SocialButtons from '~/components/SocialButtons';
 
 export default {
   props: {
-    socialIcons: Array
+    socialIcons: Array,
   },
   components: {
-    ScrollButton,
-    SocialButtons
+    RocketButton,
+    SocialButtons,
   },
-  computed: { 
+  computed: {
     year() {
-      return new Date().getFullYear()
-    }
-  }
-}
+      return new Date().getFullYear();
+    },
+  },
+};
 </script>
 
 <style scoped lang="scss">
@@ -92,4 +92,3 @@ export default {
   }
 }
 </style>
-

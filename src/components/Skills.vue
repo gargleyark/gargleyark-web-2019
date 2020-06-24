@@ -65,8 +65,11 @@ export default {
       }
 
       &:nth-child(9) {
-        display: none;
+        display: block;
         @media only screen and (min-width: 1024px) {
+          display: none;
+        }
+        @media only screen and (min-width: 1400px) {
           display: block;
         }
       }

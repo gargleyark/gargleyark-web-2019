@@ -4,20 +4,25 @@
     <section class="menuContainer">
       <svg class="ham hamRotate ham8" viewBox="0 0 100 100" width="80">
         <path
-              class="line top"
-              d="m 30,33 h 40 c 3.722839,0 7.5,3.126468 7.5,8.578427 0,5.451959 -2.727029,8.421573 -7.5,8.421573 h -12" />
+          class="line top"
+          d="m 30,33 h 40 c 3.722839,0 7.5,3.126468 7.5,8.578427 0,5.451959 -2.727029,8.421573 -7.5,8.421573 h -12"
+        />
+        <path class="line middle" d="m 30,50 h 40" />
         <path
-              class="line middle"
-              d="m 30,50 h 40" />
-        <path
-              class="line bottom"
-              d="m 70,67 h -40 c 0,0 -7.5,-0.802118 -7.5,-8.365747 0,-7.563629 7.5,-8.634253 7.5,-8.634253 h 12" />
+          class="line bottom"
+          d="m 70,67 h -40 c 0,0 -7.5,-0.802118 -7.5,-8.365747 0,-7.563629 7.5,-8.634253 7.5,-8.634253 h 12"
+        />
       </svg>
     </section>
     <section class="menu">
       <ul>
         <li v-for="link in menuLinks" :key="link.linkName">
-          <g-link :to="link.linkUrl">{{ link.linkName }}</g-link>
+          <g-link :to="link.linkUrl" v-if="!link.linkUrl.match(/http/)">{{
+            link.linkName
+          }}</g-link>
+          <a :href="link.linkUrl" v-if="link.linkUrl.match(/http/)">{{
+            link.linkName
+          }}</a>
         </li>
       </ul>
       <article class="bottom">
@@ -28,17 +33,17 @@
 </template>
 
 <script>
-import SocialButtons from '~/components/SocialButtons'
+import SocialButtons from '~/components/SocialButtons';
 
 export default {
   props: {
     menuLinks: Array,
-    socialIcons: Array
+    socialIcons: Array,
   },
   components: {
-    SocialButtons
-  }
-}
+    SocialButtons,
+  },
+};
 </script>
 
 <style scoped lang="scss">
@@ -198,4 +203,3 @@ input:hover ~ .menuContainer {
   background-color: #fff;
 }
 </style>
-

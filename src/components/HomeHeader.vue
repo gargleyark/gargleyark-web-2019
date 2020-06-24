@@ -1,14 +1,26 @@
 <template>
   <article class="home-page-header">
     <article class="header-description">
-      <section v-for="(link, i) in pageHeader" :key="link.linkName" class="links">
-        <p :style="{ zIndex: (10 - i) }"><g-link :to="link.linkUrl">{{ link.linkName }}</g-link><span v-if="i === pageHeader.length - 2"> &</span></p>
+      <section
+        v-for="(link, i) in pageHeader"
+        :key="link.linkName"
+        class="links"
+      >
+        <p :style="{ zIndex: 10 - i }">
+          <g-link :to="link.linkUrl" v-if="!link.linkUrl.match(/http/)">{{
+            link.linkName
+          }}</g-link>
+          <a :href="link.linkUrl" v-if="link.linkUrl.match(/http/)">{{
+            link.linkName
+          }}</a>
+          <span v-if="i === pageHeader.length - 2"> &</span>
+        </p>
       </section>
       <section>
         <div class="subtext" v-html="subText"></div>
       </section>
       <SocialButtons :socialMediaButtons="socialMediaButtons" />
-      <ScrollButton class="down-button-header" scrollAmount="768"/>
+      <ScrollButton class="down-button-header" scrollAmount="768" />
     </article>
     <article class="header-image">
       <img alt="oh look it's Mike" :src="mainImage" />
@@ -16,33 +28,52 @@
   </article>
 </template>
 
-
 <script>
-import Break from '~/components/Break'
-import ScrollButton from '~/components/ScrollButton'
-import SocialButtons from '~/components/SocialButtons'
-import marked from 'marked'
+import Break from '~/components/Break';
+import ScrollButton from '~/components/ScrollButton';
+import SocialButtons from '~/components/SocialButtons';
+import marked from 'marked';
 
 export default {
   components: {
     Break,
     ScrollButton,
-    SocialButtons
+    SocialButtons,
   },
   props: {
-    data: Object
+    data: Object,
   },
   computed: {
-    pageHeader() { return this.data.mainLinks.map(link => link.fields) },
-    subText() { return marked(this.data.subText) },
-    seeMoreButtonText() { return this.data.seeMoreButtonText },
-    socialMediaButtons() { return this.data.socialMediaButtons.map(({
-      fields: {name, link, icon: { fields: { file: { url }}}}
-    }) => ({ name, link, image: url }))},
-    mainImage() { return this.data.mainImage.fields.file.url },
-  }
-}
-</script> 
+    pageHeader() {
+      return this.data.mainLinks.map((link) => link.fields);
+    },
+    subText() {
+      return marked(this.data.subText);
+    },
+    seeMoreButtonText() {
+      return this.data.seeMoreButtonText;
+    },
+    socialMediaButtons() {
+      return this.data.socialMediaButtons.map(
+        ({
+          fields: {
+            name,
+            link,
+            icon: {
+              fields: {
+                file: { url },
+              },
+            },
+          },
+        }) => ({ name, link, image: url }),
+      );
+    },
+    mainImage() {
+      return this.data.mainImage.fields.file.url;
+    },
+  },
+};
+</script>
 
 <style scoped lang="scss">
 .home-page-header {
@@ -146,4 +177,3 @@ article {
   margin-bottom: 30px;
 }
 </style>
-

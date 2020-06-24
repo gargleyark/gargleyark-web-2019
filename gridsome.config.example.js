@@ -14,8 +14,35 @@ module.exports = {
         accessToken: '%token%', // required
         host: 'cdn.contentful.com',
         environment: 'master',
-        typeName: 'Contentful'
-      }
-    }
-  ]
+        typeName: 'Contentful',
+      },
+    },
+    {
+      use: 'gridsome-plugin-svg',
+      options: {
+        // default options below
+        goesBothWays: false,
+        svgo: [
+          {
+            removeTitle: false,
+          },
+          {
+            prefixIds: {
+              prefix: (_, { path }) => basename(path, '.svg'),
+              delim: '-',
+            },
+          },
+          {
+            removeDesc: false,
+          },
+          {
+            removeViewBox: false,
+          },
+          {
+            sortAttrs: true,
+          },
+        ],
+      },
+    },
+  ],
 };

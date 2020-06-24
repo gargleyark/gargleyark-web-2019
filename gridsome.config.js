@@ -10,12 +10,17 @@ module.exports = {
     {
       use: '@gridsome/source-contentful',
       options: {
-        space: '%space%', // required
-        accessToken: '%token%', // required
+        space: process.env.SPACE_ID, // required
+        accessToken: process.env.ACCESS_TOKEN, // required
         host: 'cdn.contentful.com',
         environment: 'master',
-        typeName: 'Contentful'
-      }
-    }
-  ]
+        typeName: 'Contentful',
+      },
+    },
+  ],
+  chainWebpack: (config) => {
+    const svgRule = config.module.rule('svg');
+    svgRule.uses.clear();
+    svgRule.use('vue-svg-loader').loader('vue-svg-loader');
+  },
 };

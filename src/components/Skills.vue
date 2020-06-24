@@ -39,13 +39,6 @@ export default {
     }
   }
 
-  .skill:nth-child(9) {
-    display: none;
-    @media only screen and (min-width: 1024px) {
-      display: block;
-    }
-  }
-
   &.large {
     justify-content: space-between;
 
@@ -68,6 +61,13 @@ export default {
 
         &:hover {
           margin: 35px;
+        }
+      }
+
+      &:nth-child(9) {
+        display: none;
+        @media only screen and (min-width: 1024px) {
+          display: block;
         }
       }
     }

@@ -2,7 +2,7 @@
   "name": "personal-site-grid",
   "private": true,
   "scripts": {
-    "build": "gridsome build",
+    "build": "node ./scripts/create-env.js && gridsome build",
     "develop": "gridsome develop",
     "explore": "gridsome explore",
     "setup": "node setup.js"

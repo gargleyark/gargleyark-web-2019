@@ -1,21 +1,27 @@
 <template>
-  <div class="skills" :class="[size, {white: white}]">
-    <a  v-for="skill in data" :index="skill.name" class="skill" :title="skill.name">
+  <div class="skills" :class="[size, { white: white }]">
+    <a
+      v-for="skill in data"
+      :index="skill.name"
+      class="skill"
+      :title="skill.name"
+      :key="skill.name"
+    >
       <img :alt="skill.name" :src="skill.image" />
     </a>
   </div>
 </template>
 
 <script>
-import marked from 'marked'
+import marked from 'marked';
 
 export default {
   props: {
     data: Array,
     size: String,
-    white: String
+    white: String,
   },
-}
+};
 </script>
 
 <style scoped lang="scss">
@@ -30,6 +36,13 @@ export default {
 
     > img {
       width: 100%;
+    }
+  }
+
+  .skill:nth-child(9) {
+    display: none;
+    @media only screen and (min-width: 1024px) {
+      display: block;
     }
   }
 
@@ -100,4 +113,3 @@ export default {
   }
 }
 </style>
-

@@ -22,13 +22,16 @@ export default {
   },
   methods: {
     launch() {
+      const spaceImage = document.getElementById('spaceImage');
       this.stage = 'one';
       setTimeout(() => {
         this.stage = 'two';
         setTimeout(() => {
           this.stage = 'three';
           setTimeout(() => {
-            document.getElementById('spaceImage').classList.add('show');
+            if (spaceImage) {
+              spaceImage.classList.add('show');
+            }
             window.scrollTo({
               top: this.scrollAmount,
               left: 0,
@@ -38,7 +41,9 @@ export default {
               this.stage = 'zero';
             }, 500);
             setTimeout(() => {
-              document.getElementById('spaceImage').classList.remove('show');
+              if (spaceImage) {
+                spaceImage.classList.remove('show');
+              }
             }, 4000);
           }, 500);
         }, 500);

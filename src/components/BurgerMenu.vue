@@ -26,6 +26,7 @@
         </li>
       </ul>
       <article class="bottom">
+        <DarkModeToggle />
         <SocialButtons :socialMediaButtons="socialIcons" />
       </article>
     </section>
@@ -34,6 +35,7 @@
 
 <script>
 import SocialButtons from '~/components/SocialButtons';
+import DarkModeToggle from '~/components/DarkModeToggle';
 
 export default {
   props: {
@@ -42,6 +44,7 @@ export default {
   },
   components: {
     SocialButtons,
+    DarkModeToggle,
   },
 };
 </script>
@@ -171,6 +174,7 @@ input:hover ~ .menuContainer .line {
   }
 
   .bottom {
+    position: relative;
     height: 100%;
     background: white;
     padding: 60px;

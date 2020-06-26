@@ -1,10 +1,10 @@
 <template>
   <div class="layout">
     <header class="header">
-      <BurgerMenu :menuLinks="menuLinks" :socialIcons="socialIcons"/>
+      <BurgerMenu :menuLinks="menuLinks" :socialIcons="socialIcons" />
     </header>
-    <slot/>
-    <Footer :socialIcons="socialIcons"/>
+    <slot />
+    <Footer :socialIcons="socialIcons" />
   </div>
 </template>
 
@@ -38,18 +38,18 @@ query {
 </static-query>
 
 <script>
-import BurgerMenu from "~/components/BurgerMenu";
-import Footer from "~/components/Footer";
+import BurgerMenu from '~/components/BurgerMenu';
+import Footer from '~/components/Footer';
 
 export default {
   components: {
     Footer,
-    BurgerMenu
+    BurgerMenu,
   },
   computed: {
     menuLinks() {
       return this.$static.contentfulMenu.links.map(
-        ({ fields: { linkName, linkUrl } }) => ({ linkName, linkUrl })
+        ({ fields: { linkName, linkUrl } }) => ({ linkName, linkUrl }),
       );
     },
     socialIcons() {
@@ -60,31 +60,55 @@ export default {
             name,
             icon: {
               fields: {
-                file: { url }
-              }
-            }
-          }
-        }) => ({ link, name, image: url })
+                file: { url },
+              },
+            },
+          },
+        }) => ({ link, name, image: url }),
       );
-    }
-  }
+    },
+  },
 };
 </script>
 
-
 <style lang="scss">
 body {
-  font-family: "Palanquin", sans-serif;
+  font-family: 'Palanquin', sans-serif;
   margin: 0;
   padding: 0;
   line-height: 1.5;
+  background: #fff;
+}
+
+html {
+  transition: filter 0.3s;
+
+  img {
+    transition: filter 0.3s;
+  }
+}
+
+html.darkMode {
+  filter: invert(1);
+
+  img {
+    filter: invert(1);
+  }
+
+  .social-media-button {
+    filter: invert(1);
+  }
+
+  .gallery-block .image {
+    filter: invert(1);
+  }
 }
 
 h1,
 h2,
 h3,
 h4 {
-  font-family: "Overpass", sans-serif;
+  font-family: 'Overpass', sans-serif;
 }
 
 h1 {
@@ -101,7 +125,7 @@ h1 {
 
 .grey {
   h2:before {
-    content: "";
+    content: '';
     height: 10px;
     margin-top: 0px;
     margin-bottom: 45px;
